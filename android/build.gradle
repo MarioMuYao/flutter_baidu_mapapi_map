@@ -62,9 +62,9 @@ repositories {
 
 dependencies {
 //    implementation fileTree(includes: ['*.jar'], dir: 'libs')
-    implementation 'com.baidu.lbsyun:BaiduMapSDK_Map:7.5.5'
-    implementation 'com.baidu.lbsyun:BaiduMapSDK_Search:7.5.5'
-    implementation 'com.baidu.lbsyun:BaiduMapSDK_Util:7.5.5'
+    implementation 'com.baidu.lbsyun:BaiduMapSDK_Map:7.5.7.1'
+    implementation 'com.baidu.lbsyun:BaiduMapSDK_Search:7.5.7.1'
+    implementation 'com.baidu.lbsyun:BaiduMapSDK_Util:7.5.7.1'
     implementation 'com.baidu.lbsyun:BaiduMapSDK_Location_All:9.4.0'
     implementation 'android.arch.lifecycle:extensions:1.1.1'
 //    implementation rootProject.findProject(":flutter_baidu_mapapi_base")

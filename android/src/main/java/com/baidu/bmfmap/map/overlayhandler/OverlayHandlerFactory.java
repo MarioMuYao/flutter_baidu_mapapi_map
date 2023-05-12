@@ -64,7 +64,7 @@ public class OverlayHandlerFactory {
         overlayHandlerHashMap
                 .put(OverlayHandlerType.MARKER_HANDLER, new MarkerHandler(bmfMapController));
         overlayHandlerHashMap
-                .put(OverlayHandlerType.PRISM_HANDLER, new PrismHandler(bmfMapController));
+                .put(OverlayHandlerType.PRISM_HANDLER, new BuildingHandler(bmfMapController));
         overlayHandlerHashMap
                 .put(OverlayHandlerType.BM3DMODEL_HANDLER, new BM3DModelHandler(bmfMapController));
         overlayHandlerHashMap

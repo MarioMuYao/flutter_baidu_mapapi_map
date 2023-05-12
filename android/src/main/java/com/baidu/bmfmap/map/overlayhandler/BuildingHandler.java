@@ -11,9 +11,9 @@ import com.baidu.bmfmap.utils.converter.FlutterDataConveter;
 import com.baidu.bmfmap.utils.converter.TypeConverter;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
+import com.baidu.mapapi.map.Building;
+import com.baidu.mapapi.map.BuildingOptions;
 import com.baidu.mapapi.map.Overlay;
-import com.baidu.mapapi.map.Prism;
-import com.baidu.mapapi.map.PrismOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.search.core.BuildingInfo;
 
@@ -26,10 +26,10 @@ import io.flutter.plugin.common.MethodChannel;
 /**
  * 3.1.0 3D棱柱
  */
-public class PrismHandler extends OverlayHandler {
+public class BuildingHandler extends OverlayHandler {
     private static final String TAG = "PrismHandler";
 
-    public PrismHandler(BMFMapController bmfMapController) {
+    public BuildingHandler(BMFMapController bmfMapController) {
         super(bmfMapController);
     }
 
@@ -80,10 +80,10 @@ public class PrismHandler extends OverlayHandler {
             }
             return false;
         }
-        Prism prism = (Prism) mMapController.mOverlayIdMap.get(id);
-        if (null == prism) {
+        Building building = (Building) mMapController.mOverlayIdMap.get(id);
+        if (null == building) {
             if (Env.DEBUG) {
-                Log.d(TAG, "prism is null");
+                Log.d(TAG, "building is null");
             }
             return false;
         }
@@ -99,19 +99,19 @@ public class PrismHandler extends OverlayHandler {
         boolean isSuccess = false;
         switch (member) {
             case "coordinates":
-                isSuccess = updateCoordinates(argument, prism);
+                isSuccess = updateCoordinates(argument, building);
                 break;
             case "buildInfo":
-                isSuccess = updateBuildInfo(argument, prism);
+                isSuccess = updateBuildInfo(argument, building);
                 break;
             case "topFaceColor":
-                isSuccess = updateTopFaceColor(argument, prism);
+                isSuccess = updateTopFaceColor(argument, building);
                 break;
             case "sideFaceColor":
-                isSuccess = updateSideFaceColor(argument, prism);
+                isSuccess = updateSideFaceColor(argument, building);
                 break;
             case "sideFacTexture":
-                isSuccess = updateSideFacTexturer(argument, prism);
+                isSuccess = updateSideFacTexturer(argument, building);
                 break;
             default:
                 break;
@@ -120,7 +120,7 @@ public class PrismHandler extends OverlayHandler {
         return isSuccess;
     }
 
-    private boolean updateSideFacTexturer(Map<String, Object> argument, Prism prism) {
+    private boolean updateSideFacTexturer(Map<String, Object> argument, Building building) {
         String sideFacImage = new TypeConverter<String>().getValue(argument, "value");
         if (TextUtils.isEmpty(sideFacImage)) {
             return false;
@@ -129,11 +129,11 @@ public class PrismHandler extends OverlayHandler {
         if (null == icon) {
             return false;
         }
-        prism.setCustomSideImage(icon);
+        building.setCustomSideImage(icon);
         return true;
     }
 
-    private boolean updateSideFaceColor(Map<String, Object> argument, Prism prism) {
+    private boolean updateSideFaceColor(Map<String, Object> argument, Building building) {
         String sideFaceColor = new TypeConverter<String>().getValue(argument, "value");
         if (TextUtils.isEmpty(sideFaceColor)) {
             return false;
@@ -142,11 +142,11 @@ public class PrismHandler extends OverlayHandler {
         if (null == color) {
             return false;
         }
-        prism.setSideFaceColor(color);
+        building.setSideFaceColor(color);
         return true;
     }
 
-    private boolean updateTopFaceColor(Map<String, Object> argument, Prism prism) {
+    private boolean updateTopFaceColor(Map<String, Object> argument, Building building) {
         String topFaceColor = new TypeConverter<String>().getValue(argument, "value");
         if (TextUtils.isEmpty(topFaceColor)) {
             return false;
@@ -155,17 +155,17 @@ public class PrismHandler extends OverlayHandler {
         if (null == color) {
             return false;
         }
-        prism.setTopFaceColor(color);
+        building.setTopFaceColor(color);
         return true;
     }
 
-    private boolean updateBuildInfo(Map<String, Object> argument, Prism prism) {
+    private boolean updateBuildInfo(Map<String, Object> argument, Building building) {
         Map<String, Object> buildInfoMap = new TypeConverter<Map<String, Object>>()
                 .getValue(argument, "value");
         if (null == buildInfoMap) {
             return false;
         }
-        BuildingInfo buildingInfo = prism.getBuildingInfo();
+        BuildingInfo buildingInfo = building.getBuildingInfo();
         if (buildingInfo == null) {
             buildingInfo = new BuildingInfo();
         }
@@ -196,11 +196,11 @@ public class PrismHandler extends OverlayHandler {
             }
         }
 
-        prism.setBuildingInfo(buildingInfo);
+        building.setBuildingInfo(buildingInfo);
         return true;
     }
 
-    private boolean updateCoordinates(Map<String, Object> argument, Prism prism) {
+    private boolean updateCoordinates(Map<String, Object> argument, Building building) {
         List<Map<String, Double>> coordinates =
                 new TypeConverter<List<Map<String, Double>>>().getValue(argument,
                         "value");
@@ -213,7 +213,7 @@ public class PrismHandler extends OverlayHandler {
         if (null == latLngList) {
             return false;
         }
-        prism.setPoints(latLngList);
+        building.setPoints(latLngList);
         return true;
     }
 
@@ -244,10 +244,10 @@ public class PrismHandler extends OverlayHandler {
             return false;
         }
 
-        PrismOptions prismOptions = new PrismOptions();
-        setOptions(argument, prismOptions);
+        BuildingOptions buildingOptions = new BuildingOptions();
+        setOptions(argument, buildingOptions);
 
-        final Overlay overlay = baiduMap.addOverlay(prismOptions);
+        final Overlay overlay = baiduMap.addOverlay(buildingOptions);
         if (null == overlay) {
             return false;
         }
@@ -261,8 +261,8 @@ public class PrismHandler extends OverlayHandler {
         return true;
     }
 
-    private boolean setOptions(Map<String, Object> prismOptionsMap, PrismOptions prismOptions) {
-        if (null == prismOptionsMap || null == prismOptions) {
+    private boolean setOptions(Map<String, Object> prismOptionsMap, BuildingOptions buildingOptions) {
+        if (null == prismOptionsMap || null == buildingOptions) {
             return false;
         }
 
@@ -288,38 +288,38 @@ public class PrismHandler extends OverlayHandler {
             return false;
         }
 
-        prismOptions.setPoints(latLngList);
+        buildingOptions.setPoints(latLngList);
 
         Integer topFaceColor = FlutterDataConveter.getColor(topFaceColorStr);
-        prismOptions.setTopFaceColor(topFaceColor);
+        buildingOptions.setTopFaceColor(topFaceColor);
 
         if (!TextUtils.isEmpty(sideFaceColorStr)) {
             Integer sideFaceColor = FlutterDataConveter.getColor(sideFaceColorStr);
-            prismOptions.setSideFaceColor(sideFaceColor);
-        }
+            buildingOptions.setSideFaceColor(sideFaceColor);
+        }   
 
         /*
          * color和icon只能使用一个
          */
         if (!TextUtils.isEmpty(sideFacTextureStr)) {
             BitmapDescriptor sideFacTexture = FlutterDataConveter.getIcon(sideFacTextureStr);
-            prismOptions.customSideImage(sideFacTexture);
+            buildingOptions.customSideImage(sideFacTexture);
         }
 
         Map<String, Object> buildInfoMap = (Map<String, Object>) prismOptionsMap.get("buildInfo");
         BuildingInfo buildInfo = createBuildInfo(buildInfoMap);
         if (buildInfo != null) {
-            prismOptions.setBuildingInfo(buildInfo);
+            buildingOptions.setBuildingInfo(buildInfo);
         }
 
         Integer height = new TypeConverter<Integer>().getValue(prismOptionsMap, "height");
         if (null != height) {
-            prismOptions.setHeight(height);
+            buildingOptions.setHeight(height);
         }
 
         Boolean visible = new TypeConverter<Boolean>().getValue(prismOptionsMap, "visible");
         if (null != visible) {
-            prismOptions.visible(visible);
+            buildingOptions.visible(visible);
         }
 
         return true;
