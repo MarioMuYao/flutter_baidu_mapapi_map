@@ -33,9 +33,9 @@
     },
     {
       "name": "device_info_plus",
-      "rootUri": "file:///Users/ybjf/.pub-cache/hosted/pub.flutter-io.cn/device_info_plus-9.0.0",
+      "rootUri": "file:///Users/ybjf/.pub-cache/hosted/pub.flutter-io.cn/device_info_plus-8.2.2",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "2.12"
     },
     {
       "name": "device_info_plus_platform_interface",
@@ -182,19 +182,13 @@
       "languageVersion": "2.17"
     },
     {
-      "name": "win32_registry",
-      "rootUri": "file:///Users/ybjf/.pub-cache/hosted/pub.flutter-io.cn/win32_registry-1.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.17"
-    },
-    {
       "name": "flutter_baidu_mapapi_map",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2023-05-12T09:14:01.139836Z",
+  "generated": "2023-05-12T10:20:44.480278Z",
   "generator": "pub",
   "generatorVersion": "2.19.4"
 }

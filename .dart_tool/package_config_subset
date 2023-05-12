@@ -19,9 +19,9 @@ collection
 file:///Users/ybjf/.pub-cache/hosted/pub.flutter-io.cn/collection-1.17.0/
 file:///Users/ybjf/.pub-cache/hosted/pub.flutter-io.cn/collection-1.17.0/lib/
 device_info_plus
-2.18
-file:///Users/ybjf/.pub-cache/hosted/pub.flutter-io.cn/device_info_plus-9.0.0/
-file:///Users/ybjf/.pub-cache/hosted/pub.flutter-io.cn/device_info_plus-9.0.0/lib/
+2.12
+file:///Users/ybjf/.pub-cache/hosted/pub.flutter-io.cn/device_info_plus-8.2.2/
+file:///Users/ybjf/.pub-cache/hosted/pub.flutter-io.cn/device_info_plus-8.2.2/lib/
 device_info_plus_platform_interface
 2.12
 file:///Users/ybjf/.pub-cache/hosted/pub.flutter-io.cn/device_info_plus_platform_interface-7.0.0/
@@ -102,10 +102,6 @@ win32
 2.17
 file:///Users/ybjf/.pub-cache/hosted/pub.flutter-io.cn/win32-4.1.4/
 file:///Users/ybjf/.pub-cache/hosted/pub.flutter-io.cn/win32-4.1.4/lib/
-win32_registry
-2.17
-file:///Users/ybjf/.pub-cache/hosted/pub.flutter-io.cn/win32_registry-1.1.0/
-file:///Users/ybjf/.pub-cache/hosted/pub.flutter-io.cn/win32_registry-1.1.0/lib/
 flutter_baidu_mapapi_map
 2.12
 file:///Users/ybjf/Desktop/map/
